@@ -1,5 +1,8 @@
 .Editor {
-  padding: 0 10px;
+  padding: 10px;
+  font-family: "fira code";
+  grid-area: editor;
+  overflow-y: auto;
 
   &:focus {
     outline: none;

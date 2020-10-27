@@ -1,50 +1,63 @@
 import React from "react";
-import Markdown from 'markdown-it';
 import './Editor.scss';
 
 type EditorProps = {
-	onChange?: (event: string) => unknown;
+	onChange?: (event: { markdown: string }) => unknown;
+	default?: string;
 }
 
 type EditorState = {
-	rendered: string
+	document: string;
 }
 
 export default class Editor extends React.Component<EditorProps, EditorState> {
 
+	initial: string;
+
 	constructor(props: EditorProps) {
 		super(props);
+		this.initial = localStorage.getItem('document') || '';
 		this.state = {
-			rendered: ''
+			document: this.initial
 		}
+		this.saveDocument();
+		props.onChange && props.onChange({ markdown: this.initial });
+	}
+
+	saveDocument = (): void => {
+		localStorage.setItem('document', this.state.document);
+		setTimeout(this.saveDocument, 500);
 	}
 
 	handleChange = (event: React.ChangeEvent<HTMLDivElement>): void => {
 		if (this.props.onChange) {
-			this.props.onChange(event.target.innerText || '');
+			const ev = {
+				markdown: event.target.innerText,
+			}
+			this.setState({
+				document: ev.markdown
+			})
+			this.props.onChange(ev);
 		}
-		this.setState({
-			rendered: new Markdown().render(event.target.innerText)
-		})
 	}
 
-	// renderColours = (tokens: Token[]): void => {
-	// 	console.log(tokens);
-	// 	const tokenTypes = tokens
-	// 		.map(tk => tk.type)
-	// 		.filter((t, ind, arr) => arr.indexOf(t) === ind)
-	// 		.sort();
-	// 	console.log(tokenTypes);
-	// }
+	parseDefault(input: string): JSX.Element[] {
+		return input.split('\n')
+					.filter(s => !!s)
+					.map(s => <p key={s}>{s}</p>)
+	}
 
 	render(): JSX.Element {
 		return (
 			<div
 				className="Editor"
-				style={{fontFamily: 'fira code', position: 'absolute', height: '100vh', width: '50vw'}}
 				contentEditable
 				onInput={this.handleChange}
-			></div>
+				onBlur={this.handleChange}
+				suppressContentEditableWarning={true}
+			>
+				{this.parseDefault(this.initial || '')}
+			</div>
 		)
 	}
 }

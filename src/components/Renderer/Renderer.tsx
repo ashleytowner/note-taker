@@ -14,8 +14,7 @@ export default class Renderer extends React.Component<RendererProps> {
 
 	render(): JSX.Element {
 		return (
-			<div className="Renderer" style={{position: 'absolute', right: 0, height: '100vh', width: '50vw'}}>
-				<p dangerouslySetInnerHTML={{__html: this.parseMarkdown()}}></p>
+			<div dangerouslySetInnerHTML={{__html: this.parseMarkdown()}} className="Renderer">
 			</div>
 		);
 	}

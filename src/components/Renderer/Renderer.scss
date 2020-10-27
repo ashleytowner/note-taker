@@ -1,9 +1,7 @@
 .Renderer {
   border-left: 1px solid var(--comment);
-
-  & > div {
-    padding: 0 10px;
-  }
+  grid-area: renderer;
+  padding: 10px;
 
   img {
     max-width: 40%;

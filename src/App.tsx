@@ -1,10 +1,11 @@
 import React from 'react';
-import './App.css';
-import Editor from './components/Editor/Editor';
-import Renderer from './components/Renderer/Renderer';
+import './App.scss';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import CombinedEditor from './components/CombinedEditor/CombinedEditor';
 
 type AppState = {
   markdown: string;
+  editorHTML: string;
 }
 
 export default class App extends React.Component<unknown, AppState> {
@@ -12,21 +13,30 @@ export default class App extends React.Component<unknown, AppState> {
   constructor(props: unknown) {
     super(props);
     this.state = {
-      markdown: ''
+      markdown: '',
+      editorHTML: ''
     }
   }
 
-  handleChange = (ev: string): void => {
+  handleChange = (ev: { markdown: string}): void => {
     this.setState({
-      markdown: ev
+      markdown: ev.markdown,
     })
   }
 
   render(): JSX.Element {
     return (
     <div className="App" >
-      <Editor onChange={this.handleChange} />
-      <Renderer markdown={this.state.markdown} />
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <CombinedEditor
+              onChange={this.handleChange}
+              markdown={this.state.markdown}
+            ></CombinedEditor>
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
   }

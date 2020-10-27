@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code&display=swap");
+
 :root {
   /* Dracula */
   --background: #282a36;
@@ -21,26 +23,4 @@
 body,
 textarea {
   background-color: var(--background);
-}
-
-.Editor:focus {
-  outline: none;
-  background-color: var(--current-line);
-}
-
-.Editor {
-  padding: 0 10px;
-}
-
-.Renderer {
-  border-left: 1px solid var(--comment)
-}
-
-.Renderer>* {
-  padding: 0 10px;
-
-}
-
-.Editor, .Renderer {
-  overflow-Y: auto;
 }
