@@ -24,3 +24,38 @@ body,
 textarea {
   background-color: var(--background);
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  margin: auto;
+
+  label {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem auto;
+
+    input {
+      margin: 0;
+    }
+  }
+
+  input {
+    background-color: var(--current-line);
+    border: none;
+    margin: 1rem;
+    height: 2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 70vw;
+    margin: 1rem auto;
+
+    &:focus {
+      outline-color: var(--pink);
+    }
+  }
+}

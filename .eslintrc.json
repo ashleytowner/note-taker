@@ -21,5 +21,7 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "no-tabs": "warn",
+        "indent": ["error", 2]
     }
 }
