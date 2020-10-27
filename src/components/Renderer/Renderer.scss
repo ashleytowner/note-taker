@@ -1,0 +1,87 @@
+.Renderer {
+  border-left: 1px solid var(--comment);
+
+  & > div {
+    padding: 0 10px;
+  }
+
+  img {
+    max-width: 40%;
+  }
+
+  code {
+    font-family: "fira code";
+    color: var(--green);
+  }
+
+  pre code {
+    color: var(--orange);
+  }
+
+  li::marker {
+    color: var(--cyan);
+  }
+
+  b,
+  strong {
+    color: var(--orange);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--purple);
+  }
+
+  i,
+  em,
+  blockquote * {
+    color: var(--yellow);
+    font-style: italic;
+  }
+
+  blockquote {
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+      height: 100%;
+      width: 5px;
+      background-color: var(--yellow);
+      position: absolute;
+      left: -16px;
+      border-radius: 10000px;
+    }
+  }
+
+  a {
+    color: var(--cyan);
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--comment);
+  }
+
+  table {
+    border-collapse: collapse;
+
+    thead th {
+      color: var(--purple);
+    }
+
+    tbody tr:nth-child(2n - 1) {
+      background-color: var(--current-line);
+    }
+
+    td,
+    th {
+      border: 1px solid var(--comment);
+      padding: 1rem;
+    }
+  }
+}

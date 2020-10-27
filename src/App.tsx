@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Editor from './components/Editor/Editor';
+import Renderer from './components/Renderer/Renderer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+type AppState = {
+  markdown: string;
 }
 
-export default App;
+export default class App extends React.Component<unknown, AppState> {
+
+  constructor(props: unknown) {
+    super(props);
+    this.state = {
+      markdown: ''
+    }
+  }
+
+  handleChange = (ev: string): void => {
+    this.setState({
+      markdown: ev
+    })
+  }
+
+  render(): JSX.Element {
+    return (
+    <div className="App" >
+      <Editor onChange={this.handleChange} />
+      <Renderer markdown={this.state.markdown} />
+    </div>
+  );
+  }
+}

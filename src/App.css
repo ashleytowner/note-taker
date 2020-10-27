@@ -1,38 +1,46 @@
-.App {
-  text-align: center;
+:root {
+  /* Dracula */
+  --background: #282a36;
+  --current-line: #44475a;
+  --foreground: #f8f8f2;
+  --comment: #6272a4;
+  --cyan: #8be9fd;
+  --green: #50fa7b;
+  --orange: #ffb86c;
+  --pink: #ff79c6;
+  --purple: #bd93f9;
+  --red: #ff5555;
+  --yellow: #f1fa8c;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  color: var(--foreground);
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body,
+textarea {
+  background-color: var(--background);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.Editor:focus {
+  outline: none;
+  background-color: var(--current-line);
 }
 
-.App-link {
-  color: #61dafb;
+.Editor {
+  padding: 0 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Renderer {
+  border-left: 1px solid var(--comment)
+}
+
+.Renderer>* {
+  padding: 0 10px;
+
+}
+
+.Editor, .Renderer {
+  overflow-Y: auto;
 }
