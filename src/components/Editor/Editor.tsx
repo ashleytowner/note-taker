@@ -1,9 +1,11 @@
-import React from "react";
+import React from 'react';
 import './Editor.scss';
 
 type EditorProps = {
   onChange?: (event: { markdown: string }) => unknown;
   default?: string;
+  value?: string;
+  onSave?: (event: string) => void;
 }
 
 type EditorState = {
@@ -27,7 +29,7 @@ export default class Editor extends React.Component<EditorProps, EditorState> {
   saveDocument = (previous?: string): void => {
     if (JSON.stringify(this.state.document) !== previous) {
       localStorage.setItem('document', this.state.document);
-      console.log('saving...');
+      this.props.onSave && this.props.onSave(this.state.document);
     }
     const currentString = JSON.stringify(this.state.document);
     setTimeout(() => {
@@ -64,7 +66,7 @@ export default class Editor extends React.Component<EditorProps, EditorState> {
     // >
     //   {this.parseDefault(this.initial || '')}
     // </div>
-      <textarea onChange={this.handleChange} defaultValue={this.initial} className="Editor">
+      <textarea onChange={this.handleChange} value={this.props.value} className="Editor">
       </textarea>
     )
   }

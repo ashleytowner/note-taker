@@ -1,5 +1,6 @@
-import React, { Component, Context, createContext } from "react";
-import Firebase from "firebase";
+import React, { Component, Context, createContext } from 'react';
+import Firebase from 'firebase/app';
+import 'firebase/auth';
 
 export const UserContext = createContext({ user: null }) as Context<{ user: Firebase.User | null }>;
 
@@ -10,7 +11,6 @@ export default class UserProvider extends Component<{children: unknown}> {
 
   componentDidMount = (): void => {
     Firebase.auth().onAuthStateChanged(user => {
-      console.log('provider', user);
       this.setState({ user });
     });
   };

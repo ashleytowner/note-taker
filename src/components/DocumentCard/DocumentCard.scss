@@ -1,0 +1,14 @@
+.DocumentCard {
+  border-radius: 4px;
+  background: var(--green);
+  height: 10rem;
+  text-align: center;
+  padding: 1rem;
+  * {
+    color: black;
+  }
+
+  a {
+    font-weight: bold;
+  }
+}

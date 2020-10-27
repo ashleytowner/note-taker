@@ -1,5 +1,6 @@
-import React from "react";
-import Firebase from 'firebase';
+import React from 'react';
+import Firebase from 'firebase/app';
+import 'firebase/auth';
 
 type LoginState = {
   email: string;
@@ -26,9 +27,7 @@ export default class Login extends React.Component<unknown, LoginState> {
 
   handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    Firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then(u => {
-      console.log(u);
-    })
+    Firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password);
   }
 
   render(): JSX.Element {
