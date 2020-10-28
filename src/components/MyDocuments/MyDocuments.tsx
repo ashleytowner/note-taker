@@ -50,7 +50,6 @@ export default class MyDocuments extends React.Component<Record<string, unknown>
       }
     };
     Firebase.firestore().collection('documents')
-      // .add(newDoc)
       .doc()
       .set(newDoc)
       .then(() => {
@@ -108,7 +107,11 @@ export default class MyDocuments extends React.Component<Record<string, unknown>
         <button onClick={this.newDocumentPrompt}>New</button>
         {
           this.state.creating &&
-          <PromptBox onSubmit={this.createDocument} message="Please enter a file name."></PromptBox>
+          <PromptBox
+            onSubmit={this.createDocument}
+            message="Please enter a file name."
+            onCancel={() => this.setState({creating: false})}
+          ></PromptBox>
         }
         <div className="file-grid">
           {this.state.documents}

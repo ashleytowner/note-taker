@@ -1,10 +1,12 @@
 import React from 'react';
 import Firebase from 'firebase/app';
 import 'firebase/auth';
+import { Redirect } from 'react-router-dom';
 
 type LoginState = {
   email: string;
   password: string;
+  loginCompleted: boolean;
 }
 
 export default class Login extends React.Component<unknown, LoginState> {
@@ -13,7 +15,8 @@ export default class Login extends React.Component<unknown, LoginState> {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      loginCompleted: false
     }
   }
 
@@ -27,12 +30,18 @@ export default class Login extends React.Component<unknown, LoginState> {
 
   handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    Firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password);
+    Firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then(() => {
+        this.setState({
+          loginCompleted: true
+        })
+      })
   }
 
   render(): JSX.Element {
     return (
       <div>
+        {this.state.loginCompleted && <Redirect to="/"></Redirect>}
         <h1 style={{textAlign: 'center'}}>Login</h1>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="email">

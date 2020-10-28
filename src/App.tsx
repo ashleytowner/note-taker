@@ -3,7 +3,7 @@ import './App.scss';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import CombinedEditor from './components/CombinedEditor/CombinedEditor';
 import Firebase from 'firebase/app';
-import Login from './components/Login/Login';
+import Login from './components/Login';
 import MyDocuments from './components/MyDocuments/MyDocuments';
 import UserProvider from './providers/UserProvider';
 import Nav from './components/Nav/Nav';

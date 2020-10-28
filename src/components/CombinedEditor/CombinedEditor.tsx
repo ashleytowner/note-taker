@@ -2,7 +2,7 @@ import Renderer from '../Renderer/Renderer';
 import React from 'react';
 import Editor from '../Editor/Editor';
 import './CombinedEditor.scss'
-import { RouteComponentProps, withRouter } from 'react-router';
+import { Redirect, RouteComponentProps, withRouter } from 'react-router';
 import MarkdownDocument from '../../types/Document';
 import Firebase from 'firebase/app';
 import 'firebase/firestore';
@@ -17,6 +17,7 @@ type CombinedEditorProps = {
 
 type CombinedEditorState = {
   document?: MarkdownDocument;
+  deleteComplete: boolean;
 }
 
 class CombinedEditor extends React.Component<CombinedEditorProps, CombinedEditorState> {
@@ -27,7 +28,8 @@ class CombinedEditor extends React.Component<CombinedEditorProps, CombinedEditor
     super(props);
     this.initial = props.initial || '';
     this.state = {
-      document: undefined
+      document: undefined,
+      deleteComplete: false
     }
   }
 
@@ -60,9 +62,22 @@ class CombinedEditor extends React.Component<CombinedEditorProps, CombinedEditor
     }
   }
 
+  handleDelete = (): void => {
+    const { id } = this.props.match.params as Record<string, string>;
+    Firebase.firestore().collection('documents')
+      .doc(id)
+      .delete()
+      .then(() => {
+        this.setState({
+          deleteComplete: true
+        })
+      })
+  }
+
   render(): JSX.Element {
     return (
-      <div className="CombinedEditor"> 
+      <div className="CombinedEditor">
+        {this.state.deleteComplete && <Redirect to="/"></Redirect>}
         <Editor 
           onSave={this.handleSave}
           value={this.state.document?.markdown}
@@ -70,8 +85,9 @@ class CombinedEditor extends React.Component<CombinedEditorProps, CombinedEditor
         />
         <Renderer markdown={this.state.document?.markdown || ''} />
         <EditorMenu
-          onDelete={() => null}
-          onEdit={() => null}
+          deleteConfirmation={this.state.document?.name || 'unknown'}
+          onDelete={this.handleDelete}
+          // onEdit={() => null}
         ></EditorMenu>
       </div>
     )

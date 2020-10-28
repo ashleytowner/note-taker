@@ -28,7 +28,9 @@ export default class Nav extends React.Component {
           className="material-icons"
           onClick={this.toggleMenu}
         >{this.state.menuActive ? 'close' : 'menu'}</i>
-        <h1>Markdown Note Taker</h1>
+        <h1>
+          Note Down
+        </h1>
         {
           this.state.menuActive &&
           <div
