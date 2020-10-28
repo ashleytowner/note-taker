@@ -7,7 +7,7 @@ import Login from './components/Login/Login';
 import MyDocuments from './components/MyDocuments/MyDocuments';
 import UserProvider from './providers/UserProvider';
 import Nav from './components/Nav/Nav';
-import Signup from './components/Signup/Signup';
+import Signup from './components/Signup';
 
 type AppState = {
   markdown: string;

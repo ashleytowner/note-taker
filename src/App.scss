@@ -18,10 +18,12 @@
   --header: var(--cyan);
   --link: var(--cyan);
   --button: var(--green);
+  --button-alt: var(--purple);
   --bold: var(--orange);
   --italic: var(--yellow);
   --border: var(--comment);
   --bullets: var(--cyan);
+  --code-bg: var(--current-line);
 }
 
 * {
@@ -36,7 +38,7 @@ main {
   position: fixed;
   bottom: 0;
   left: 0;
-  padding: 1rem 2rem;
+  // padding: 1rem 2rem;
 }
 
 .Nav {
@@ -77,11 +79,15 @@ img {
 
 code {
   font-family: "fira code";
-  color: var(--green);
+  background: var(--code-bg);
+  padding: 0.2rem;
+  border-radius: 4px;
 }
 
-pre code {
-  color: var(--orange);
+pre {
+  background: var(--code-bg);
+  padding: 0.2rem;
+  border-radius: 4px;
 }
 
 li::marker {
@@ -168,20 +174,20 @@ form {
       margin: 0;
     }
   }
+}
 
-  input {
-    background-color: var(--current-line);
-    border: none;
-    margin: 1rem;
-    height: 2rem;
-    border-radius: 4px;
-    font-size: 1rem;
-    width: 100%;
-    max-width: 70vw;
-    margin: 1rem auto;
+input {
+  background-color: var(--current-line);
+  border: none;
+  margin: 1rem;
+  height: 2rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 70vw;
+  margin: 1rem auto;
 
-    &:focus {
-      outline-color: var(--pink);
-    }
+  &:focus {
+    outline-color: var(--pink);
   }
 }

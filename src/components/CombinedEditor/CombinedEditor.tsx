@@ -6,6 +6,8 @@ import { RouteComponentProps, withRouter } from 'react-router';
 import MarkdownDocument from '../../types/Document';
 import Firebase from 'firebase/app';
 import 'firebase/firestore';
+import EditorMenu from '../EditorMenu';
+
 
 type CombinedEditorProps = {
   onChange: (event: { markdown: string }) => unknown;
@@ -60,13 +62,17 @@ class CombinedEditor extends React.Component<CombinedEditorProps, CombinedEditor
 
   render(): JSX.Element {
     return (
-      <div className="CombinedEditor">
+      <div className="CombinedEditor"> 
         <Editor 
           onSave={this.handleSave}
           value={this.state.document?.markdown}
           onChange={this.handleChange}
         />
         <Renderer markdown={this.state.document?.markdown || ''} />
+        <EditorMenu
+          onDelete={() => null}
+          onEdit={() => null}
+        ></EditorMenu>
       </div>
     )
   }

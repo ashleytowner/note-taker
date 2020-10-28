@@ -8,7 +8,8 @@ import './MyDocuments.scss'
 import PromptBox from '../PromptBox';
 
 type MyDocumentsState = {
-  documents: JSX.Element[]
+  documents: JSX.Element[],
+  creating: boolean
 }
 
 export default class MyDocuments extends React.Component<Record<string, unknown>, MyDocumentsState> {
@@ -18,15 +19,25 @@ export default class MyDocuments extends React.Component<Record<string, unknown>
   constructor(props: Record<string, unknown>) {
     super(props);
     this.state = {
-      documents: []
+      documents: [],
+      creating: false
     }
   }
 
-  private createDocument = () => {
+  private newDocumentPrompt = () => {
+    this.setState({
+      creating: true
+    })
+  }
+
+  private createDocument = (name: string) => {
+    this.setState({
+      creating: false
+    })
     if (!this.context.user?.uid) return;
     const newDoc: MarkdownDocument = {
       created: new Date(),
-      name: 'New Document',
+      name,
       owner: this.context.user.uid,
       markdown: '# New Document\nGet Started',
       tags: [],
@@ -94,8 +105,11 @@ export default class MyDocuments extends React.Component<Record<string, unknown>
     return (
       <div className='MyDocuments'>
         <h1>My Documents</h1>
-        <button onClick={this.createDocument}>New</button>
-        <PromptBox onSubmit={() => null} message="Please enter a file name."></PromptBox>
+        <button onClick={this.newDocumentPrompt}>New</button>
+        {
+          this.state.creating &&
+          <PromptBox onSubmit={this.createDocument} message="Please enter a file name."></PromptBox>
+        }
         <div className="file-grid">
           {this.state.documents}
         </div>
