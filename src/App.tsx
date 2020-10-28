@@ -26,14 +26,14 @@ export default class App extends React.Component<unknown, AppState> {
     }
     if (Firebase.apps.length === 0) {
       this.firebase = Firebase.initializeApp({
-        apiKey: 'AIzaSyACJYpziGrjNvx2c_QtvdTQZ-M51_BRLw4',
-        authDomain: 'markdown-notes-a25b5.firebaseapp.com',
-        databaseURL: 'https://markdown-notes-a25b5.firebaseio.com',
-        projectId: 'markdown-notes-a25b5',
-        storageBucket: 'markdown-notes-a25b5.appspot.com',
-        messagingSenderId: '22979893937',
-        appId: '1:22979893937:web:35ae432d4406501a096090',
-        measurementId: 'G-GN60ZNP91C'
+        apiKey: process.env.REACT_APP_APIKEY,
+        authDomain: process.env.REACT_APP_AUTHDOMAIN,
+        databaseURL: process.env.REACT_APP_DATABASEURL,
+        projectId: process.env.REACT_APP_PROJECTID,
+        storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+        messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+        appId: process.env.REACT_APP_APPID,
+        measurementId: process.env.REACT_APP_MEASUREMENTID
       });
     }
   }
