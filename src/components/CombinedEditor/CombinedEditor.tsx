@@ -87,7 +87,6 @@ class CombinedEditor extends React.Component<CombinedEditorProps, CombinedEditor
         <EditorMenu
           deleteConfirmation={this.state.document?.name || 'unknown'}
           onDelete={this.handleDelete}
-          // onEdit={() => null}
         ></EditorMenu>
       </div>
     )
