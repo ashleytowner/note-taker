@@ -1,6 +1,7 @@
 .Renderer {
-  border-left: 1px solid var(--comment);
+  border-left: 1px solid var(--border);
   grid-area: renderer;
   padding: 10px;
   overflow-y: auto;
+  background-color: var(--background);
 }

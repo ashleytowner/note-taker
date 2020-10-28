@@ -29,10 +29,26 @@
   box-sizing: border-box;
 }
 
+$nav-height: 50px;
+
+main {
+  height: calc(100vh - #{$nav-height});
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 1rem 2rem;
+}
+
+.Nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: $nav-height;
+}
+
 body,
 textarea {
   background-color: var(--background);
-  padding: 1rem;
 }
 
 button {
@@ -86,7 +102,7 @@ h6 {
   color: var(--header);
 }
 
-i,
+i:not(.material-icons),
 em,
 blockquote * {
   color: var(--italic);

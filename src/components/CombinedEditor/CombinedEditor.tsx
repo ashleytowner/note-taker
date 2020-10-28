@@ -1,7 +1,6 @@
 import Renderer from '../Renderer/Renderer';
 import React from 'react';
 import Editor from '../Editor/Editor';
-import Nav from '../Nav/Nav';
 import './CombinedEditor.scss'
 import { RouteComponentProps, withRouter } from 'react-router';
 import MarkdownDocument from '../../types/Document';
@@ -62,7 +61,6 @@ class CombinedEditor extends React.Component<CombinedEditorProps, CombinedEditor
   render(): JSX.Element {
     return (
       <div className="CombinedEditor">
-        <Nav />
         <Editor 
           onSave={this.handleSave}
           value={this.state.document?.markdown}

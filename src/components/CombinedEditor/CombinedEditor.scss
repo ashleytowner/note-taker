@@ -1,13 +1,9 @@
 .CombinedEditor {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 5fr 95fr;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
-  grid-template-areas: "nav nav" "editor renderer";
-  position: fixed;
-  top: 0;
-  left: 0;
+  grid-template-areas: "editor renderer";
 
   .button-bar {
     position: fixed;

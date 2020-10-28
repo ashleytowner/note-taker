@@ -5,6 +5,7 @@ import { UserContext } from '../../providers/UserProvider';
 import DocumentCard from '../DocumentCard/DocumentCard';
 import MarkdownDocument from '../../types/Document';
 import './MyDocuments.scss'
+import PromptBox from '../PromptBox';
 
 type MyDocumentsState = {
   documents: JSX.Element[]
@@ -94,6 +95,7 @@ export default class MyDocuments extends React.Component<Record<string, unknown>
       <div className='MyDocuments'>
         <h1>My Documents</h1>
         <button onClick={this.createDocument}>New</button>
+        <PromptBox onSubmit={() => null} message="Please enter a file name."></PromptBox>
         <div className="file-grid">
           {this.state.documents}
         </div>

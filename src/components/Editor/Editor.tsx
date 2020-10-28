@@ -2,9 +2,18 @@ import React from 'react';
 import './Editor.scss';
 
 type EditorProps = {
+  /**
+   * Callback function after change has been made to markdown.
+   */
   onChange?: (event: { markdown: string }) => unknown;
   default?: string;
+  /**
+   * The value of the markdown
+   */
   value?: string;
+  /**
+   * Callback function after a save to localstorage has been made
+   */
   onSave?: (event: string) => void;
 }
 

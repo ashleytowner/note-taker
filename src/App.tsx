@@ -6,6 +6,8 @@ import Firebase from 'firebase/app';
 import Login from './components/Login/Login';
 import MyDocuments from './components/MyDocuments/MyDocuments';
 import UserProvider from './providers/UserProvider';
+import Nav from './components/Nav/Nav';
+import Signup from './components/Signup/Signup';
 
 type AppState = {
   markdown: string;
@@ -47,20 +49,26 @@ export default class App extends React.Component<unknown, AppState> {
       <div className="App" >
         <UserProvider>
           <Router>
-            <Switch>
-              <Route exact path="/edit/:id">
-                <CombinedEditor
-                  onChange={this.handleChange}
-                  markdown={this.state.markdown}
-                ></CombinedEditor>
-              </Route>
-              <Route path="/login">
-                <Login></Login>
-              </Route>
-              <Route exact path="/">
-                <MyDocuments></MyDocuments>
-              </Route>
-            </Switch>
+            <Nav></Nav>
+            <main>
+              <Switch>
+                <Route exact path="/edit/:id">
+                  <CombinedEditor
+                    onChange={this.handleChange}
+                    markdown={this.state.markdown}
+                  ></CombinedEditor>
+                </Route>
+                <Route path="/login">
+                  <Login></Login>
+                </Route>
+                <Route path="/signup">
+                  <Signup></Signup>
+                </Route>
+                <Route exact path="/">
+                  <MyDocuments></MyDocuments>
+                </Route>
+              </Switch>
+            </main>
           </Router>
         </UserProvider>
       </div>
