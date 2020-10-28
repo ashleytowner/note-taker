@@ -38,7 +38,8 @@ main {
   position: fixed;
   bottom: 0;
   left: 0;
-  // padding: 1rem 2rem;
+  width: 100vw;
+  padding: 1rem 2rem;
 }
 
 .Nav {
@@ -164,7 +165,7 @@ form {
   margin: auto;
 
   label {
-    width: 100%;
+    width: 70vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -183,7 +184,7 @@ input {
   height: 2rem;
   border-radius: 4px;
   font-size: 1rem;
-  width: 100%;
+  width: 90%;
   max-width: 70vw;
   margin: 1rem auto;
 

@@ -32,17 +32,20 @@ export default class Login extends React.Component<unknown, LoginState> {
 
   render(): JSX.Element {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="email">
+      <div>
+        <h1 style={{textAlign: 'center'}}>Login</h1>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="email">
           Email:
-          <input value={this.state.email} onChange={this.handleChange} type="text" name="email"></input>
-        </label>
-        <label htmlFor="password">
+            <input value={this.state.email} onChange={this.handleChange} type="text" name="email"></input>
+          </label>
+          <label htmlFor="password">
           Password:
-          <input value={this.state.password} onChange={this.handleChange} type="password" name="password"></input>
-        </label>
-        <input type="submit" value="Log In" />
-      </form>
+            <input value={this.state.password} onChange={this.handleChange} type="password" name="password"></input>
+          </label>
+          <input type="submit" value="Log In" />
+        </form>
+      </div>
     )
   }
 }

@@ -44,7 +44,7 @@ export default class Nav extends React.Component {
         <div className={`menu-shade ${this.state.menuActive ? 'active' : ''}`}>
           <Link onClick={this.dismissMenu} to='/'><i className="material-icons">text_snippet</i> My Documents</Link>
           <Link onClick={this.dismissMenu} to='/login'><i className="material-icons">login</i> Log In</Link>
-          <Link onClick={this.dismissMenu} to='/signup'>Sign Up</Link>
+          <Link onClick={this.dismissMenu} to='/signup'><i className="material-icons">person_add</i> Sign Up</Link>
         </div>
       </nav>
     )

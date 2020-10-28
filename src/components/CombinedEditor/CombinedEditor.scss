@@ -1,9 +1,12 @@
 .CombinedEditor {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  height: 100%;
+  height: calc(100% + 2rem);
   width: 100vw;
   grid-template-areas: "editor renderer";
+  position: relative;
+  left: -2rem;
+  top: -1rem;
 
   .button-bar {
     position: fixed;

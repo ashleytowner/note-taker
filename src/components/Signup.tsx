@@ -28,11 +28,20 @@ export default class Signup extends React.Component<unknown, SignupState> {
 
   render(): JSX.Element {
     return (
-      <form onSubmit={this.signup}>
-        <input type="email" name="email" onChange={this.handleChange}/>
-        <input type="password" onChange={this.handleChange} name="password"/>
-        <input type="submit" value="Sign Up" />
-      </form>
+      <div>
+        <h1 style={{textAlign: 'center'}}>Sign Up</h1>
+        <form onSubmit={this.signup}>
+          <label htmlFor="email">
+          Email:
+            <input type="email" name="email" onChange={this.handleChange}/>
+          </label>
+          <label htmlFor="password">
+          Password:
+            <input type="password" onChange={this.handleChange} name="password"/>
+          </label>
+          <input type="submit" value="Sign Up" />
+        </form>
+      </div>
     )
   }
 }
